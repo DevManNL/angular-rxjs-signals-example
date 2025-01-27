@@ -14,13 +14,23 @@ export class ProductService {
   private http = inject(HttpClient);
   private errorService = inject(HttpErrorService);
 
-  getproducts(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl)
       .pipe(
         //map(p => ({ data: p } as Result<Product[]>)),
         tap(() => console.log('In http.get pipeline'))
       );
   }
+
+  getProductsById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.productsUrl}/${id}`)
+      .pipe(
+        //map(p => ({ data: p } as Result<Product>)),
+        tap(() => console.log('In http.get by id pipeline'))
+      );
+  }
+
+
 
   /*
   private http = inject(HttpClient);
