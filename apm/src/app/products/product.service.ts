@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Product, Result } from './product';
-import { catchError, map, of, shareReplay, tap } from 'rxjs';
+import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorService } from '../utilities/http-error.service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
@@ -11,6 +11,18 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 export class ProductService {
   private productsUrl = 'api/products';
 
+  private http = inject(HttpClient);
+  private errorService = inject(HttpErrorService);
+
+  getproducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsUrl)
+      .pipe(
+        //map(p => ({ data: p } as Result<Product[]>)),
+        tap(() => console.log('In http.get pipeline'))
+      );
+  }
+
+  /*
   private http = inject(HttpClient);
   private errorService = inject(HttpErrorService);
   //private reviewService = inject(ReviewService);
@@ -38,6 +50,5 @@ private productsResult = toSignal(this.productsResult$,
   { initialValue: ({ data: [] } as Result<Product[]>) });
 products = computed(() => this.productsResult().data);
 productsError = computed(() => this.productsResult().error);
-
+***********/
 }
-
