@@ -34,27 +34,36 @@ export class ProductListComponent implements OnInit, OnDestroy {
   */
 
   ngOnInit(): void {
+    
     console.log('In component init');
+    
+    // Subscribe to the observable
     this.sub = this.productService.getProducts()
+    // With a pipe, you can chain multiple operators to the observable
     .pipe(
+      // tap is een operator die een side-effect uitvoert zonder de data te veranderen
       tap(() => console.log('In component pipeline'))
     )
+    // Only if you subscribe to the observable, the request is sent to the server
     .subscribe({
+      // next is called when the observable emits a value
       next: products => {
         this.products = products;
         console.log('In component next', this.products);
       },
+      // error is called when the observable emits an error
       error: err => this.errorMessage = err
     }); 
   }
 
+  // If the user selects a product, the selectedProductId is set to the productId
+  onSelected(productId: number): void {
+    this.selectedProductId = productId;
+  }
+
+  // If the component is destroyed, the subscription is unsubscribed
   ngOnDestroy(): void {
     console.log('In component destroy');
     this.sub.unsubscribe(); 
-  }
-
-
-  onSelected(productId: number): void {
-    this.selectedProductId = productId;
   }
 }

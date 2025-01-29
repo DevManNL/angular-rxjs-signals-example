@@ -18,12 +18,10 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
 
   private productService = inject(ProductService);
 
-  // Product to display
   product: Product | null = null;
-
-  // Set the page title
   pageTitle = this.product ? `Product Detail for: ${this.product.productName}` : 'Product Detail';
 
+  // If an input parameter changes, then Angulat will execute this method
   ngOnChanges(changes: SimpleChanges): void {
     const id = changes['productId'].currentValue;	
     if (id) {
