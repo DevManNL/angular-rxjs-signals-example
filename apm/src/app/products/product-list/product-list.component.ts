@@ -29,12 +29,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
   // Selected product id to highlight the entry
   selectedProductId: number = 0;
 
-  selectedProductId$ = this.productService.productSelected$;
+  readonly selectedProductId$ = this.productService.productSelected$
+    .pipe(
+      tap((id) => console.log('In component productSelected pipeline', id))
+    );
   
   /*
   selectedProductId = this.productService.selectedProductId;
   */
-
+ 
   ngOnInit(): void {
     
     console.log('In component init');
