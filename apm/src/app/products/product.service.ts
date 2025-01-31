@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { Product, Result } from './product';
-import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, shareReplay, Subject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorService } from '../utilities/http-error.service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
@@ -14,6 +14,10 @@ export class ProductService {
   private http = inject(HttpClient);
   private errorService = inject(HttpErrorService);
 
+
+  private productSelectedSubject = new BehaviorSubject<number>(0);
+  productSelected$ = this.productSelectedSubject.asObservable();
+  
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl)
       .pipe(
@@ -30,7 +34,10 @@ export class ProductService {
       );
   }
 
-
+  selectProduct(id: number): void {
+    console.log('In selectProduct');
+    this.productSelectedSubject.next(id);
+  }
 
   /*
   private http = inject(HttpClient);

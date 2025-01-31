@@ -43,5 +43,6 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   }
 
   addToCart(product: Product) {
+    this.productService.selectProduct(product.id);
   }
 }

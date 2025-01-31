@@ -2,5 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
-/apm/.vscode
+.vs/*
+.vscode/*
+.angular/*
+/node_modules
+
