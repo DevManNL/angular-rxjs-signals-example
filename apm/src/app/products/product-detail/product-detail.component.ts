@@ -4,6 +4,7 @@ import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 import { Product } from '../product';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../product.service';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
     selector: 'pm-product-detail',
@@ -17,6 +18,7 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   sub!: Subscription;
 
   private productService = inject(ProductService);
+  private cardService = inject(CartService);
 
   product: Product | null = null;
   pageTitle = this.product ? `Product Detail for: ${this.product.productName}` : 'Product Detail';
@@ -43,6 +45,7 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   }
 
   addToCart(product: Product) {
-    this.productService.selectProduct(product.id);
+    this.cardService.addToCart(product);
   }
 }
+ 
