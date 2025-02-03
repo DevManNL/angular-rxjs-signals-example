@@ -11,11 +11,10 @@ import { CartService } from './cart/cart.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // Just enough here for the template to compile
   pageTitle = 'Acme Product Management';
 
   private cartService = inject(CartService);
 
-  cartCount = 0; //this.cartService.cartCount;
+  cartCount = this.cartService.cartCount;
 
 }
