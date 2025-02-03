@@ -29,6 +29,6 @@ export class CartItemComponent {
   }
 
   removeFromCart(): void {
-
+    this.cartService.removeFromCart(this.cartItem);
   }
 }
