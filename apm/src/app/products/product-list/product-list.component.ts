@@ -21,11 +21,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   errorMessage = '';
   sub = new Subscription();
-  /*
-  products = this.productService.products;
-  errorMessage = this.productService.productsError;
-  */
-
+  
   // Selected product id to highlight the entry
   selectedProductId: number = 0;
 
@@ -34,10 +30,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       tap((id) => console.log('In component productSelected pipeline', id))
     );
   
-  /*
-  selectedProductId = this.productService.selectedProductId;
-  */
- 
+  // Angular lifecycle hook
   ngOnInit(): void {
     
     console.log('In component init');
@@ -45,13 +38,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
     /**
      * Subscribe to the observable for products
      */
+    
+    /*
     this.sub.add(this.productService.getProducts()
     // With a pipe, you can chain multiple operators to the observable
     .pipe(
-      // tap is een operator die een side-effect uitvoert zonder de data te veranderen
+      // tap is a operator which executes a side-effect without altering data
       tap(() => console.log('In component getProducts pipeline'))
     )
-    // Only if you subscribe to the obser vable, the request is sent to the server
+    // Only if you subscribe to the observable, the request is sent to the server
     .subscribe({
       // next is called when the observable emits a value
       next: products => {
@@ -61,26 +56,16 @@ export class ProductListComponent implements OnInit, OnDestroy {
       // error is called when the observable emits an error
       error: err => this.errorMessage = err
     })); 
-
-    /**
-     *  Subscribe to the observable for selected product
-     */
-    /*
-    this.sub.add(this.productService.productSelected$
-      .pipe(
-        // tap is een operator die een side-effect uitvoert zonder de data te veranderen
-        tap((id) => console.log('In component productSelected pipeline', id))
-      )
-      .subscribe(id => {
-        this.selectedProductId = id;  
-    }));
     */
 
+    this.sub.add(
+      this.productService.getProducts()
+        .subscribe(products => this.products = products));
   }
 
   // If the user selects a product, the selectedProductId is set to the productId
   onSelected(productId: number): void {
-    this.productService.selectProduct(productId);
+    this.productService.selectProduct(productId); 
   }
 
   // If the component is destroyed, the subscription is unsubscribed
