@@ -9,7 +9,6 @@ import { CartService } from 'src/app/cart/cart.service';
 @Component({
     selector: 'pm-product-detail',
     templateUrl: './product-detail.component.html',
-    standalone: true,
     imports: [NgIf, NgFor, CurrencyPipe]
 })
 export class ProductDetailComponent implements OnChanges, OnDestroy {

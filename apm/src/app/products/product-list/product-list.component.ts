@@ -9,8 +9,7 @@ import { Subscription, tap } from 'rxjs';
 @Component({
     selector: 'pm-product-list',
     templateUrl: './product-list.component.html',
-    standalone: true,
-  imports: [NgIf, NgFor, NgClass, ProductDetailComponent, AsyncPipe]
+    imports: [NgIf, NgFor, NgClass, ProductDetailComponent, AsyncPipe]
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   pageTitle = 'Products';
