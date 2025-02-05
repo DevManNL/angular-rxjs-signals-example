@@ -1,9 +1,10 @@
 //import 'zone.js/dist/zone';  // Required for Stackblitz
 import { Component, inject } from '@angular/core';
-import { RouterLinkActive, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'pm-root',
+    standalone: true,
     imports: [RouterLinkActive, RouterLink, RouterOutlet],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']

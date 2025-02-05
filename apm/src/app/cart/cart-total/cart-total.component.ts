@@ -4,6 +4,7 @@ import { CartService } from '../cart.service';
 
 @Component({
     selector: 'sw-cart-total',
+    standalone: true,
     templateUrl: './cart-total.component.html',
     imports: [NgIf, CurrencyPipe]
 })

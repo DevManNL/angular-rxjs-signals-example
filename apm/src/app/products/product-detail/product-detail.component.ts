@@ -8,6 +8,7 @@ import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
     selector: 'pm-product-detail',
+    standalone: true,
     templateUrl: './product-detail.component.html',
     imports: [NgIf, NgFor, CurrencyPipe]
 })

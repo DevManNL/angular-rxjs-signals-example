@@ -6,6 +6,7 @@ import { CartService } from '../cart.service';
 
 @Component({
     selector: 'sw-cart-list',
+    standalone: true,
     imports: [CartItemComponent, NgFor, NgIf],
     templateUrl: 'cart-list.component.html'
 })
