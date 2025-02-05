@@ -57,18 +57,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
       error: err => this.errorMessage = err
     })); 
     */
-
-    this.sub.add(
-      this.productService.getProducts()
-        .pipe(
-          tap(() => console.log('In component getProducts pipeline'))
-        )
-        .subscribe(products => this.products = products));
   }
 
   // If the user selects a product, the selectedProductId is set to the productId
   onSelected(productId: number): void {
-    this.productService.selectProduct(productId); 
+    //this.productService.selectProduct(productId); 
   }
 
   // If the component is destroyed, the subscription is unsubscribed
