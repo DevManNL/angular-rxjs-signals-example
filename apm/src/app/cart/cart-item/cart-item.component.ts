@@ -18,13 +18,13 @@ export class CartItemComponent {
 
   // Solution 2
   @Input({ required: true }) set cartItem(ci: CartItem) {
-    this.item.set(ci);
+    this.item = ci; //.set(ci);
   }
   
   private cartService = inject(CartService);
 
   // Solution 2.
-  item = signal<CartItem>(undefined!);
+  item: CartItem = undefined!; //signal<CartItem>(undefined!);
 
   // Quantity available (hard-coded to 8)
   // Mapped to an array from 1-8
@@ -43,9 +43,11 @@ export class CartItemComponent {
   // });
  
   // Solution 2
-  exPrice = computed(() => { 
-    return this.item().quantity * this.item().product.price;
-  });
+  exPrice = this.item.quantity * this.item.product.price;
+  
+  // exPrice = computed(() => { 
+  //   return this.item().quantity * this.item().product.price;
+  // });
 
 
   // Solution 1
@@ -55,7 +57,7 @@ export class CartItemComponent {
 
   // Solution 2
   onQuantitySelected(quantity: number): void {
-    this.cartService.updateQuantity(this.item(), Number(quantity));
+    // this.cartService.updateQuantity(this.item(), Number(quantity));
   }
 
 
@@ -66,6 +68,6 @@ export class CartItemComponent {
 
   // Solution 2
   removeFromCart(): void {
-    this.cartService.removeFromCart(this.item());
+    //this.cartService.removeFromCart(this.item());
   }
 }

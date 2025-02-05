@@ -13,7 +13,7 @@ import { CartService } from '../cart.service';
 export class CartListComponent {
   pageTitle = 'Cart';
 
-  private cartService = inject(CartService);
+  //private cartService = inject(CartService);
 
-  cartItems = this.cartService.cartItems;
+  cartItems = []; //this.cartService.cartItems;
 }

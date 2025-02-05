@@ -28,7 +28,7 @@ export class ProductService {
     return this.http.get<Product>(`${this.productsUrl}/${id}`)
       .pipe(
         //map(p => ({ data: p } as Result<Product>)),
-        tap(() => console.log('In http.get by id pipeline'))
+        tap(p => console.log('In http.get by id pipeline', p))
       );
   }
 

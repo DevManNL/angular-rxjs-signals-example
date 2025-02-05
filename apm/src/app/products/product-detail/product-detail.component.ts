@@ -25,7 +25,11 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
 
   // If an input parameter changes, then Angulat will execute this method
   ngOnChanges(changes: SimpleChanges): void {
+    
     const id = changes['productId'].currentValue;	
+    
+    console.log('In ProductDetailComponent ngOnChanges', id);
+    
     if (id) {
       this.sub = this.productService.getProductsById(id)
       .subscribe({
@@ -45,7 +49,7 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   }
 
   addToCart(product: Product) {
-    this.cardService.addToCart(product);
+    //this.cardService.addToCart(product);
   }
 }
  

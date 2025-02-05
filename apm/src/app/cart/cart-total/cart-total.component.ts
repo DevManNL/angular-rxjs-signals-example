@@ -10,12 +10,12 @@ import { CartService } from '../cart.service';
 })
 export class CartTotalComponent {
   
-  private cardService = inject(CartService);
+  //private cardService = inject(CartService);
   
-  cartItems = this.cardService.cartItems;
-  subTotal = this.cardService.subTotal;
-  deliveryFee = this.cardService.deliveryFee;
-  tax = this.cardService.tax;
-  totalPrice = this.cardService.totalPrice;
+  cartItems = []; //this.cardService.cartItems;
+  subTotal = 0; //this.cardService.subTotal;
+  deliveryFee = 0; //this.cardService.deliveryFee;
+  tax = 0; //this.cardService.tax;
+  totalPrice = 0 //this.cardService.totalPrice;
 
 }

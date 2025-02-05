@@ -60,6 +60,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     this.sub.add(
       this.productService.getProducts()
+        .pipe(
+          tap(() => console.log('In component getProducts pipeline'))
+        )
         .subscribe(products => this.products = products));
   }
 
