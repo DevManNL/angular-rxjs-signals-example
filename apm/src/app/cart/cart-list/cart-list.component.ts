@@ -7,13 +7,13 @@ import { CartService } from '../cart.service';
 @Component({
     selector: 'sw-cart-list',
     standalone: true,
-    imports: [CartItemComponent, NgFor, NgIf],
+    imports: [CartItemComponent, NgFor],
     templateUrl: 'cart-list.component.html'
 })
 export class CartListComponent {
   pageTitle = 'Cart';
 
-  //private cartService = inject(CartService);
+  private cartService = inject(CartService);
 
-  cartItems = []; //this.cartService.cartItems;
+  cartItems = this.cartService.cartItems;
 }
