@@ -36,12 +36,11 @@ export class CartService {
 
   removeFromCart(cartItem: CartItem): void {
     // Implement the removeFromCart method here
-    //this.cartItems.update(items => items.filter(item => item.product.id !== cartItem.product.id));
+    this.cartItems.update(items => items.filter(item => item.product.id !== cartItem.product.id));
   }
 
   updateQuantity(cardItem: CartItem, quantity: number): void {
-    // Implement the updateQuantity method here
-    //this.cartItems.update(items => items.map(item => item.product.id === cardItem.product.id ? { ...item, quantity } : item));
+    this.cartItems.update(items => items.map(item => item.product.id === cardItem.product.id ? { ...item, quantity } : item));
   }
 
 

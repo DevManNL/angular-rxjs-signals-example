@@ -15,25 +15,27 @@ export class CartItemComponent {
 
   // Solution 2
   @Input({ required: true }) set cartItem(ci: CartItem) {
-    this.item = ci; 
+    this.item.set(ci); 
   }
   
   private cartService = inject(CartService);
 
-  item: CartItem = undefined!; //signal<CartItem>(undefined!);
+  item = signal<CartItem>(undefined!);
 
   // Quantity available (hard-coded to 8)
   // Mapped to an array from 1-8
   qtyArr = [...Array(8).keys()].map(x => x + 1);
 
   // Calculate the extended price
-  exPrice = this.item?.quantity * this.item?.product.price;
+  exPrice = computed(() => this.item()?.quantity * this.item()?.product.price);
   
   onQuantitySelected(quantity: number): void {
     // Impement the updateQuantity method here from the CartService
+    this.cartService.updateQuantity(this.item(), quantity);
   }
 
   removeFromCart(): void {
-    // Implement the removeFromCart method here from the CartService
+    // Implement the removeFromCart method here from the CartService`
+    this.cartService.removeFromCart(this.item());
   }
 }
