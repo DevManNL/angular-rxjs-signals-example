@@ -26,7 +26,7 @@ export class ProductService {
   // }
   
   // Implement getProducts observable
-
+  
 
   getProductsById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.productsUrl}/${id}`)
@@ -39,7 +39,7 @@ export class ProductService {
   selectProduct(id: number): void {
     console.log('In selectProduct');
 
-    // Implement a value set on the BehaviorSubject
+    // Implement next value set on the BehaviorSubject
     //this.productSelectedSubject.next(id);
   }
 }
