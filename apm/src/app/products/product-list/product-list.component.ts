@@ -3,7 +3,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import { Subscription, tap } from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
@@ -15,29 +15,31 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 export class ProductListComponent implements OnInit, OnDestroy {
   pageTitle = 'Products';
   
-  private productService = inject(ProductService);
+  // Inject the ProductService
+  //private productService = inject(ProductService);
   
   // Products
   products: Product[] = [];
   errorMessage = '';
-  sub = new Subscription();
+  
+  sub: any = null;
   
   // Selected product id to highlight the entry
   selectedProductId: number = 0;
 
-  readonly selectedProductId$ = this.productService.productSelected$
-    .pipe(
-      tap((id) => console.log('In component productSelected pipeline', id))
-    );
+  // readonly selectedProductId$ = this.productService.productSelected$
+  //   .pipe(
+  //     tap((id) => console.log('In component productSelected pipeline', id))
+  //   );
+
+
+  // Implement selectedProductId observable
+  readonly selectedProductId$ = new Observable<number>();
   
   // Angular lifecycle hook
   ngOnInit(): void {
     
     console.log('In component init');
-    
-    /**
-     * Subscribe to the observable for products
-     */
     
     /*
     this.sub.add(this.productService.getProducts()
@@ -57,16 +59,26 @@ export class ProductListComponent implements OnInit, OnDestroy {
       error: err => this.errorMessage = err
     })); 
     */
+
+    // Add getProducts observable
+
   }
 
   // If the user selects a product, the selectedProductId is set to the productId
   onSelected(productId: number): void {
     //this.productService.selectProduct(productId); 
+    
+    // Call selectProduct method from the service
+
+
   }
 
   // If the component is destroyed, the subscription is unsubscribed
   ngOnDestroy(): void {
     console.log('In component destroy');
-    this.sub.unsubscribe(); 
+    
+    //this.sub.unsubscribe(); 
+
+    // Unsubscribe from the subscription
   }
 }
