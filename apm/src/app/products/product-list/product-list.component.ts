@@ -35,29 +35,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
     
     console.log('In component init');
     
-    /**
-     * Subscribe to the observable for products
-     */
-    
-    /*
-    this.sub.add(this.productService.getProducts()
-    // With a pipe, you can chain multiple operators to the observable
-    .pipe(
-      // tap is a operator which executes a side-effect without altering data
-      tap(() => console.log('In component getProducts pipeline'))
-    )
-    // Only if you subscribe to the observable, the request is sent to the server
-    .subscribe({
-      // next is called when the observable emits a value
-      next: products => {
-        this.products = products;
-        console.log('In component next', this.products);
-      },
-      // error is called when the observable emits an error
-      error: err => this.errorMessage = err
-    })); 
-    */
-
     this.sub.add(
       this.productService.getProducts()
         .pipe(

@@ -12,8 +12,7 @@ export class ProductService {
   private productsUrl = 'api/products';
 
   private http = inject(HttpClient);
-  private errorService = inject(HttpErrorService);
-
+  
   private productSelectedSubject = new BehaviorSubject<number>(0);
   productSelected$ = this.productSelectedSubject.asObservable();
   
