@@ -8,15 +8,10 @@ import { Product } from "../products/product";
 export class CartService {
 
   // Implement the cartItems signal here
-  cartItems: CartItem[] = [];
-  //cartItems = signal<CartItem[]>([]);
+  cartItems = signal<CartItem[]>([]);
 
   // Implement the cartCount signal here
-  get cartCount() {
-    return this.cartItems.reduce((accQty, item) => accQty + item.quantity, 0);
-  }
-  // cartCount = computed(() => this.cartItems()
-  //   .reduce((accQty, item) => accQty + item.quantity, 0));
+  cartCount = computed(() => this.cartItems().reduce((accQty, item) => accQty + item.quantity, 0));
 
   // Implement the cartTotals signal here
   subTotal = 0;
@@ -35,11 +30,8 @@ export class CartService {
   addToCart(product: Product): void {
 
     // Implement the addToCart method here
-    this.cartItems.push({ product, quantity: 1 });
-    
-    // So use the set or update method of the signal and always make sure to make a new array and update the signal with the new array so the change detection can work
-    //this.cartItems.update(items => [...items, { product, quantity: 1 }]); 
-
+    this.cartItems.update(items => [...items, { product, quantity: 1 }]);
+    console.log('Adding to cart', product, this.cartItems());
   }
 
   removeFromCart(cartItem: CartItem): void {
