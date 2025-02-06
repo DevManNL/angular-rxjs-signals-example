@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 
-import { NgIf, NgFor, NgClass, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Subscription, tap } from 'rxjs';
@@ -10,7 +10,7 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
     selector: 'pm-product-list',
     standalone: true,
     templateUrl: './product-list.component.html',
-    imports: [NgIf, NgFor, NgClass, ProductDetailComponent, AsyncPipe]
+    imports: [NgClass, ProductDetailComponent, AsyncPipe]
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   pageTitle = 'Products';

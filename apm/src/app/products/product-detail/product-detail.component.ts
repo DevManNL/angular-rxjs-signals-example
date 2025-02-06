@@ -49,10 +49,7 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   }
 
   addToCart(product: Product) {
-    
-    // Implement the addToCart method here
-    //this.cardService.addToCart(product);
-
+    this.cardService.addToCart(product);
   }
 }
  
