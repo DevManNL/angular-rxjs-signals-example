@@ -14,18 +14,13 @@ export class CartService {
   cartCount = computed(() => this.cartItems().reduce((accQty, item) => accQty + item.quantity, 0));
 
   // Implement the cartTotals signal here
-  subTotal = 0;
-  deliveryFee = 0;
-  tax = 0;
-  totalPrice = 0;
-
-  // subTotal = computed(() => this.cartItems().reduce((accTotal, item ) => accTotal + (item.product.price * item.quantity), 0));
-  // deliveryFee = computed<number> (() => this.subTotal() < 50 ? 5.99 : 0);
-  // tax = computed(() => Math.round(this.subTotal() * 10.75) / 100);
-  // totalPrice = computed(() => this.subTotal() + this.deliveryFee() + this.tax());
+  subTotal = computed(() => this.cartItems().reduce((total, item) => total + (item.quantity * item.product.price), 0));
+  deliveryFee = computed<number>(() => this.subTotal() < 50 ? 5.99 : 0);
+  tax = computed<number>(() => Math.round(this.subTotal() * 21 / 100))
+  totalPrice = computed<number>(() => this.subTotal() + this.deliveryFee() + this.tax());
 
   // Implement the effect here to log the cart array length
-  //eLength = effect(() => console.log('Cart array length', this.cartItems().length));
+  eLength = effect(() => console.log('Cart array length', this.cartItems().length));
 
   addToCart(product: Product): void {
 
