@@ -13,61 +13,23 @@ import { FormsModule } from '@angular/forms';
 })
 export class CartItemComponent {
 
-  // Solution 1
-  //@Input({ required: true }) cartItem!: CartItem;
-
-  // Solution 2
-  @Input({ required: true }) set cartItem(ci: CartItem) {
-    this.item = ci; //.set(ci);
-  }
-  
-  private cartService = inject(CartService);
-
-  // Solution 2.
-  item: CartItem = undefined!; //signal<CartItem>(undefined!);
+  @Input({ required: true }) cartItem!: CartItem;
 
   // Quantity available (hard-coded to 8)
   // Mapped to an array from 1-8
   qtyArr = [...Array(8).keys()].map(x => x + 1);
 
   // Calculate the extended price
-  //exPrice = this.cartItem?.quantity * this.cartItem?.product.price;
- 
-  // Solution 1
-  // exPrice = computed(() => { 
-  //     const cardItem = this.cartService.cartItems().find(item => item.product.id === this.cartItem.product.id);
-  //     if (cardItem) {
-  //       return cardItem.quantity * this.cartItem.product.price;
-  //     }
-  //     return 0;
-  // });
- 
-  // Solution 2
-  exPrice = this.item.quantity * this.item.product.price;
+  exPrice = 0;
   
-  // exPrice = computed(() => { 
-  //   return this.item().quantity * this.item().product.price;
-  // });
-
-
-  // Solution 1
-  // onQuantitySelected(quantity: number): void {
-  //   this.cartService.updateQuantity(this.cartItem, Number(quantity));
-  // }
-
-  // Solution 2
   onQuantitySelected(quantity: number): void {
-    // this.cartService.updateQuantity(this.item(), Number(quantity));
+    // Implement the updateQuantity method here
+
   }
 
 
-  // Solution 1
-  // removeFromCart(): void {
-  //   this.cartService.removeFromCart(this.cartItem);
-  // }
-
-  // Solution 2
   removeFromCart(): void {
-    //this.cartService.removeFromCart(this.item());
+    // Implement the removeFromCart method here
+
   }
 }
