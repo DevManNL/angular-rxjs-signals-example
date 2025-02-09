@@ -18,12 +18,11 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   sub!: Subscription;
 
   private productService = inject(ProductService);
-  private cardService = inject(CartService);
-
+  
   product: Product | null = null;
   pageTitle = this.product ? `Product Detail for: ${this.product.productName}` : 'Product Detail';
 
-  // If an input parameter changes, then Angular will execute this method
+    // If an input parameter changes, then Angular will execute this method
   ngOnChanges(changes: SimpleChanges): void {
     
     const id = changes['productId'].currentValue;	

@@ -22,11 +22,11 @@ export class CartService {
   totalPrice = 0;
 
   // Implement the effect here to log the cart array length
-  
+
   
   addToCart(product: Product): void {
     // Implement the addToCart method here
-
+    
   }
 
   removeFromCart(cartItem: CartItem): void {
