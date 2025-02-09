@@ -14,17 +14,8 @@ export class ProductService {
   private http = inject(HttpClient);
   
   // Implement productSelected behaviour subject
-  // private productSelectedSubject = new BehaviorSubject<number>(0);
-  // productSelected$ = this.productSelectedSubject.asObservable();
   
 
-  // getProducts(): Observable<Product[]> {
-  //   return this.http.get<Product[]>(this.productsUrl)
-  //     .pipe(
-  //       tap(() => console.log('In http.get pipeline'))
-  //     );
-  // }
-  
   // Implement getProducts observable
   
 
@@ -40,6 +31,6 @@ export class ProductService {
     console.log('In selectProduct');
 
     // Implement next value set on the BehaviorSubject
-    //this.productSelectedSubject.next(id);
+    
   }
 }
