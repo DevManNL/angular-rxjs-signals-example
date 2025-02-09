@@ -23,7 +23,7 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   product: Product | null = null;
   pageTitle = this.product ? `Product Detail for: ${this.product.productName}` : 'Product Detail';
 
-  // If an input parameter changes, then Angulat will execute this method
+  // If an input parameter changes, then Angular will execute this method
   ngOnChanges(changes: SimpleChanges): void {
     
     const id = changes['productId'].currentValue;	
@@ -49,7 +49,8 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   }
 
   addToCart(product: Product) {
-    this.cardService.addToCart(product);
+    // Call the cart service to add the product to the cart
+
   }
 }
  
