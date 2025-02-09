@@ -10,7 +10,7 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
     selector: 'pm-product-list',
     standalone: true,
     templateUrl: './product-list.component.html',
-    imports: [NgClass, ProductDetailComponent, AsyncPipe]
+    imports: [NgIf, NgFor, NgClass, ProductDetailComponent, AsyncPipe]
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   pageTitle = 'Products';
