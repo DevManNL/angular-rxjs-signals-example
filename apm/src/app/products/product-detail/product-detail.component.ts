@@ -49,7 +49,7 @@ export class ProductDetailComponent implements OnChanges, OnDestroy {
   }
 
   addToCart(product: Product) {
-    //this.cardService.addToCart(product);
+    // Goto branch start signals!
   }
 }
  
